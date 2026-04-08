@@ -1,6 +1,7 @@
 import {test,expect} from '../../fixtures/fixture'
-import ApiHelper from '../../utils/ApiHelper';
-let id=1;
+import ApiHelper from '../../utils/ApiHelper'
+import { data } from '../../test-data/post'
+let id=data.id;
 
 // test("get_request",async({request})=>{
 //   const response=await request.get('/posts')
@@ -112,7 +113,7 @@ test("get_all_posts",async({request,fix1})=>{
 })
 test("get_one_post",async({request,fix1})=>{
   //const api=new ApiHelper(request);
-  const body=await fix1.fetchonepost(1);
+  const body=await fix1.fetchonepost(id);
   console.log(body);
 
 })
@@ -123,7 +124,7 @@ test("create_post",async({request,fix1})=>{
 })
 test("update_post",async({request,fix1})=>{
   //const api=new ApiHelper(request);
-  const body=await fix1.updatepost(1,'updated title','updated body',99);
+  const body=await fix1.updatepost(id,'updated title','updated body',99);
   console.log(body);
 })
 test("patch_post",async({request})=>{
