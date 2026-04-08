@@ -1,4 +1,4 @@
-import {test,expect} from '@playwright/test'
+import {test,expect} from '../fixtures/fixture'
 import ApiHelper from '../utils/ApiHelper';
 let id=1;
 
@@ -84,9 +84,9 @@ let id=1;
 //   console.log(body);
 // })
 
-test("get_all_posts",async({request})=>{
-  const api=new ApiHelper(request);
-  const body=await api.fetchallposts();
+test("get_all_posts",async({request,fix1})=>{
+  //const api=new ApiHelper(request);
+  const body=await fix1.fetchallposts();
   //const body= await api.fetchonepost(1);
   console.log(await body);
   await expect(body.length).toBeGreaterThan(0);
@@ -110,20 +110,20 @@ test("get_all_posts",async({request})=>{
       'nostrum rerum est autem sunt rem eveniet architecto'
   })
 })
-test("get_one_post",async({request})=>{
-  const api=new ApiHelper(request);
-  const body=await api.fetchonepost(1);
+test("get_one_post",async({request,fix1})=>{
+  //const api=new ApiHelper(request);
+  const body=await fix1.fetchonepost(1);
   console.log(body);
 
 })
-test("create_post",async({request})=>{
-  const api=new ApiHelper(request);
-  const body=await api.createpost('this is my book','this is body section',89);
+test("create_post",async({request,fix1})=>{
+  //const api=new ApiHelper(request);
+  const body=await fix1.createpost('this is my book','this is body section',89);
   console.log(body);
 })
-test("update_post",async({request})=>{
-  const api=new ApiHelper(request);
-  const body=await api.updatepost(1,'updated title','updated body',99);
+test("update_post",async({request,fix1})=>{
+  //const api=new ApiHelper(request);
+  const body=await fix1.updatepost(1,'updated title','updated body',99);
   console.log(body);
 })
 test("patch_post",async({request})=>{
