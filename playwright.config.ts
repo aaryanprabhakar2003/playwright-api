@@ -38,6 +38,11 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
+    {
+      name:"api-test",
+      testDir:'./tests/api',
+      use:{...devices['Desktop Chrome']}
+    }
 
   
     

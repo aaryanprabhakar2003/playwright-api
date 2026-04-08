@@ -1,5 +1,5 @@
-import {test,expect} from '../fixtures/fixture'
-import ApiHelper from '../utils/ApiHelper';
+import {test,expect} from '../../fixtures/fixture'
+import ApiHelper from '../../utils/ApiHelper';
 let id=1;
 
 // test("get_request",async({request})=>{
