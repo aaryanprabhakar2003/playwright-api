@@ -1,4 +1,4 @@
-import {APIRequestContext} from '@playwright/test'
+import {APIRequestContext, expect} from '@playwright/test'
 
 export default class ApiHelper{
     readonly request:APIRequestContext
@@ -6,10 +6,15 @@ export default class ApiHelper{
         this.request=request
     }
 
-    async fetchallposts(){
-      const response=await this.request.get('/posts');
-      const body=response.json();
-      return body;
+    async fetchallposts() {
+        const response = await this.request.get('/posts');
+        if (!response.ok()) {
+            throw new Error("this api failed");
+        }
+        else {
+            const body = response.json();
+            return body;
+        }
     }
 
     async fetchonepost(id:number){
