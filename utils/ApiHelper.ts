@@ -1,4 +1,10 @@
 import {APIRequestContext, expect} from '@playwright/test'
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+  userId: number;
+}
 
 export default class ApiHelper{
     readonly request:APIRequestContext
@@ -6,18 +12,18 @@ export default class ApiHelper{
         this.request=request
     }
 
-    async fetchallposts() {
+    async fetchallposts():Promise<Post[]>{
         const response = await this.request.get('/posts');
         if (!response.ok()) {
             throw new Error("this api failed");
         }
         else {
-            const body = response.json();
+            const body = await response.json();
             return body;
         }
     }
 
-    async fetchonepost(id:number){
+    async fetchonepost(id:number):Promise<Post[]>{
         const response=await this.request.get(`/posts/${id}`);
         const body=response.json();
         return body;
